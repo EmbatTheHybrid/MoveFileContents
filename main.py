@@ -28,7 +28,7 @@ layout_left = [
 
 # Layout of right side
 layout_right = [
-    [sg.Listbox(values=[], enable_events=True, size=(40, 20), key="-LIST-")]
+    [sg.Listbox(values=[], enable_events=True, size=(40, 20), key="-LIST-", bind_return_key=True)]
 ]
 
 
@@ -42,7 +42,7 @@ layout = [
 ]
 
 # Window Creation
-window = sg.Window("Move Contents by Embat", layout)
+window = sg.Window("Move Contents by Embat", return_keyboard_events=True, layout=layout)
 
 # Event handler
 while True:
@@ -97,5 +97,7 @@ while True:
             prevfold = ""
         except:
             pass
+    elif event == "BackSpace:8":
+        window["-BACK-"].click()
 
 window.close()
